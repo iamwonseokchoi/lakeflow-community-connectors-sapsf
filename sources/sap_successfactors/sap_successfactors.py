@@ -716,11 +716,11 @@ class LakeflowConnect:
             "EmployeeCompBonusEntryDTO": {"pks": ["entryId"], "path": "/rest/compensation/v1/bonus", "ing": "snapshot"},
             "EmployeeCompStockEntryDTO": {"pks": ["entryId"], "path": "/rest/compensation/v1/stock", "ing": "snapshot"},
             "EmployeeCompVarpayEntryDTO": {"pks": ["entryId"], "path": "/rest/compensation/v1/varpay", "ing": "snapshot"},
-            "EmployeeCompForceCommentDTO": {"pks": ["commentId"], "path": "/rest/compensation/v1/comments", "ing": "cdc"},
+            "EmployeeCompForceCommentDTO": {"pks": ["commentId"], "path": "/rest/compensation/v1/comments", "ing": "snapshot"},
             # Position Budgeting Control (sap-sf-PositionBudgetingControl-v1.json)
-            "PBCReplicationData": {"pks": ["id", "startDate", "endDate"], "path": "/rest/pbc/v1/replication", "ing": "cdc"},
-            "SymbolicAccountData": {"pks": ["id"], "path": "/rest/pbc/v1/symbolicAccounts", "ing": "cdc"},
-            "EmployeeGroupingData": {"pks": ["id"], "path": "/rest/pbc/v1/employeeGrouping", "ing": "cdc"},
+            "PBCReplicationData": {"pks": ["id", "startDate", "endDate"], "path": "/rest/pbc/v1/replication", "ing": "snapshot"},
+            "SymbolicAccountData": {"pks": ["id"], "path": "/rest/pbc/v1/symbolicAccounts", "ing": "snapshot"},
+            "EmployeeGroupingData": {"pks": ["id"], "path": "/rest/pbc/v1/employeeGrouping", "ing": "snapshot"},
             # I-9 Audit Trail (i9audittrail.json)
             "i9AuditTrailRecord": {"pks": ["externalCode"], "path": "/rest/iam/i9/v1/audittrail", "ing": "append"},
             # Time APIs

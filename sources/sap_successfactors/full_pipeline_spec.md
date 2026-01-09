@@ -6542,7 +6542,7 @@ pipeline_spec = {
             "table": {
                 "source_table": "EmployeeCompForceCommentDTO",
                 "table_configuration": {
-                    "scd_type": "SCD_TYPE_2",
+                    "scd_type": "SCD_TYPE_1",
                     "primary_keys": '["commentId"]'
                 }
             }
@@ -6578,7 +6578,7 @@ pipeline_spec = {
             "table": {
                 "source_table": "EmployeeGroupingData",
                 "table_configuration": {
-                    "scd_type": "SCD_TYPE_2",
+                    "scd_type": "SCD_TYPE_1",
                     "primary_keys": '["id"]'
                 }
             }
@@ -6614,7 +6614,7 @@ pipeline_spec = {
             "table": {
                 "source_table": "PBCReplicationData",
                 "table_configuration": {
-                    "scd_type": "SCD_TYPE_2",
+                    "scd_type": "SCD_TYPE_1",
                     "primary_keys": '["id", "startDate", "endDate"]'
                 }
             }
@@ -6623,7 +6623,7 @@ pipeline_spec = {
             "table": {
                 "source_table": "SymbolicAccountData",
                 "table_configuration": {
-                    "scd_type": "SCD_TYPE_2",
+                    "scd_type": "SCD_TYPE_1",
                     "primary_keys": '["id"]'
                 }
             }
