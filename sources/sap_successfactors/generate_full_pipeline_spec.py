@@ -328,17 +328,19 @@ def build_entity_registry():
         }
 
     # CPM entities
+    # Note: CPM entities have mdfSystemRecordStatus in schema but API doesn't support filtering by it
+    # Changed from cdc_with_deletes to cdc to avoid 400 errors on delete queries
     cpm_entities = {
-        "Achievement": {"pks": ["achievementId"], "ing": "cdc_with_deletes"},
+        "Achievement": {"pks": ["achievementId"], "ing": "cdc"},
         "AchievementDevGoalDetail": {"pks": ["Achievement_achievementId", "externalCode"], "ing": "cdc"},
         "AchievementGoalDetail": {"pks": ["Achievement_achievementId", "externalCode"], "ing": "cdc"},
-        "Activity": {"pks": ["activityId"], "ing": "cdc_with_deletes"},
+        "Activity": {"pks": ["activityId"], "ing": "cdc"},
         "ActivityFeedback": {"pks": ["Activity_activityId", "feedbackId"], "ing": "cdc"},
         "ActivityStatus": {"pks": ["externalCode"], "ing": "cdc"},
-        "Feedback": {"pks": ["feedbackId"], "ing": "cdc_with_deletes"},
+        "Feedback": {"pks": ["feedbackId"], "ing": "cdc"},
         "FeedbackFlag": {"pks": ["Feedback_feedbackId", "externalCode"], "ing": "cdc"},
-        "PMActivity": {"pks": ["activityId"], "ing": "cdc_with_deletes"},
-        "PMAchievement": {"pks": ["achievementId"], "ing": "cdc_with_deletes"},
+        "PMActivity": {"pks": ["activityId"], "ing": "cdc"},
+        "PMAchievement": {"pks": ["achievementId"], "ing": "cdc"},
         "PMActivityFeedback": {"pks": ["activityId", "feedbackId"], "ing": "cdc"},
         "CalibrationSession": {"pks": ["sessionId"], "ing": "cdc"},
         "CalibrationSessionSubject": {"pks": ["sessionSubjectId"], "ing": "cdc"},
