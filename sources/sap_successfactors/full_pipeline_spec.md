@@ -1941,9 +1941,8 @@ pipeline_spec = {
             "table": {
                 "source_table": "JobApplicationInterview",
                 "table_configuration": {
-                    "scd_type": "SCD_TYPE_2",
-                    "primary_keys": '["applicationInterviewId"]',
-                    "sequence_by": "lastModifiedDateTime"
+                    "scd_type": "SCD_TYPE_1",
+                    "primary_keys": '["applicationInterviewId"]'
                 }
             }
         },
@@ -2103,7 +2102,7 @@ pipeline_spec = {
                 "table_configuration": {
                     "scd_type": "SCD_TYPE_2",
                     "primary_keys": '["offerApprovalId"]',
-                    "sequence_by": "lastModifiedDateTime"
+                    "sequence_by": "lastModifiedDate"
                 }
             }
         },
@@ -2635,7 +2634,7 @@ pipeline_spec = {
                 "table_configuration": {
                     "scd_type": "SCD_TYPE_2",
                     "primary_keys": '["formContentId"]',
-                    "sequence_by": "lastModifiedDateTime"
+                    "sequence_by": "lastModifiedDate"
                 }
             }
         },
@@ -2665,7 +2664,7 @@ pipeline_spec = {
                 "table_configuration": {
                     "scd_type": "SCD_TYPE_2",
                     "primary_keys": '["formDataId"]',
-                    "sequence_by": "lastModifiedDateTime"
+                    "sequence_by": "formLastModifiedDate"
                 }
             }
         },

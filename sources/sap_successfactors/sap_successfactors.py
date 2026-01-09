@@ -194,7 +194,7 @@ class LakeflowConnect:
             "JobApplicationSnapshot_TalentPool": {"pks": ["backgroundElementId"], "cursor": "lastModifiedDateTime"},
             "JobApplicationSnapshot_TalentPoolcorp": {"pks": ["backgroundElementId"], "cursor": "lastModifiedDateTime"},
             "JobApplicationComments": {"pks": ["commentId"], "cursor": "lastModifiedDateTime"},
-            "JobApplicationInterview": {"pks": ["applicationInterviewId"], "cursor": "lastModifiedDateTime"},
+            "JobApplicationInterview": {"pks": ["applicationInterviewId"], "cursor": None, "ing": "snapshot"},
             "JobApplicationInterviewFieldControls": {"pks": ["applicationInterviewId"], "cursor": "lastModifiedDateTime"},
             "JobApplicationOnboardingData": {"pks": ["applicationId"], "cursor": "lastModifiedDateTime"},
             "JobApplicationOnboardingStatus": {"pks": ["applicationId"], "cursor": "lastModifiedDateTime"},
@@ -206,7 +206,7 @@ class LakeflowConnect:
             "JobRequisitionOperator": {"pks": ["jobReqId", "operatorRole"], "cursor": "lastModifiedDateTime"},
             "JobRequisitionPosting": {"pks": ["jobPostingId"], "cursor": "lastModifiedDateTime"},
             "JobRequisitionAssessment": {"pks": ["jobReqId"], "cursor": "lastModifiedDateTime"},
-            "JobOffer": {"pks": ["offerApprovalId"], "cursor": "lastModifiedDateTime"},
+            "JobOffer": {"pks": ["offerApprovalId"], "cursor": "lastModifiedDate"},
             "JobOfferApprover": {"pks": ["offerApprovalId", "offerApproverId"], "cursor": "lastModifiedDateTime"},
             "JobOfferFieldControls": {"pks": ["offerApprovalId"], "cursor": "lastModifiedDateTime"},
             "JobOfferTemplate_Offer_Detail": {"pks": ["templateId"], "cursor": "lastModifiedDateTime"},
@@ -267,8 +267,8 @@ class LakeflowConnect:
 
         # Performance form entities
         perf_form_entities = {
-            "FormHeader": {"pks": ["formDataId"], "cursor": "lastModifiedDateTime"},
-            "FormContent": {"pks": ["formContentId"], "cursor": "lastModifiedDateTime"},
+            "FormHeader": {"pks": ["formDataId"], "cursor": "formLastModifiedDate"},
+            "FormContent": {"pks": ["formContentId"], "cursor": "lastModifiedDate"},
             "FormFolder": {"pks": ["folderId"], "cursor": "lastModifiedDateTime"},
             "FormSubject": {"pks": ["formSubjectId"], "cursor": "lastModifiedDateTime"},
             "FormPerfPotSummary": {"pks": ["formContentId", "formDataId", "sectionIndex"], "cursor": "lastModifiedDateTime"},
