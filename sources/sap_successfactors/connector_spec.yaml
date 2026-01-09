@@ -1,0 +1,57 @@
+# sap_successfactors Community Connector Spec
+# This file defines the specification for the connector including
+# connection parameters and allowlist options.
+
+# ============================================================================
+# Connection Parameters
+# These are provided when creating the Unity Catalog connection.
+# ============================================================================
+connection:
+  parameters:
+    - name: api_server
+      type: string
+      required: true
+      description: >
+        SAP SuccessFactors API server hostname (without https://).
+        Example: api8.successfactors.com or api4.successfactors.eu
+
+    - name: company_id
+      type: string
+      required: true
+      description: >
+        Your SAP SuccessFactors company ID (tenant identifier).
+        Found in Admin Center > Company Settings.
+
+    - name: user_id
+      type: string
+      required: true
+      description: >
+        API user ID with data read permissions.
+        Must have OData API permissions assigned.
+
+    - name: password
+      type: string
+      required: true
+      description: >
+        Password for the API user account.
+
+    - name: auth_type
+      type: string
+      required: false
+      description: >
+        Authentication type. Default is "basic".
+        Currently only "basic" authentication is supported.
+
+    - name: page_size
+      type: string
+      required: false
+      description: >
+        Number of records per API page (default: 1000).
+        Reduce for large records or memory constraints.
+
+# ============================================================================
+# External Options Allowlist
+# These table-specific options can be passed via table_options in pipeline_spec.
+# They must be included in externalOptionsAllowList when creating the UC connection.
+# ============================================================================
+external_options_allowlist: "custom_filter,$select,$expand,userId,timeAccountType,asOfDate,page,pageSize"

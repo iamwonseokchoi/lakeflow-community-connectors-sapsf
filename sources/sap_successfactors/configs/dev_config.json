@@ -1,0 +1,8 @@
+{
+  "api_server": "YOUR_API_SERVER.sapsf.com",
+  "company_id": "YOUR_COMPANY_ID",
+  "user_id": "YOUR_USER_ID",
+  "password": "YOUR_PASSWORD_OR_API_KEY",
+  "auth_type": "basic",
+  "page_size": "1000"
+}
