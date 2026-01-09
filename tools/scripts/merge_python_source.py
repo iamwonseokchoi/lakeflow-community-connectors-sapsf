@@ -41,24 +41,46 @@ def extract_imports_and_code(content: str) -> tuple:
     import_lines = []
     code_lines = []
     in_imports = True
+    in_multiline_docstring = False
+    docstring_delimiter = None
 
     i = 0
     while i < len(lines):
         line = lines[i]
         stripped = line.strip()
 
-        # Skip docstrings and comments at the beginning of the file.
-        # We only treat them specially while we are still in the initial
-        # "import section" (in_imports == True). Once we have seen real
-        # code, docstrings are kept as-is.
-        if stripped.startswith('"""') or stripped.startswith("'''"):
-            if in_imports:
-                # Skip leading module docstring lines entirely
-                i += 1
-                continue
-            else:
-                # Inner/function/class docstrings are part of the code
+        # Handle multi-line docstrings - track when we're inside one
+        if in_multiline_docstring:
+            # Check if this line ends the docstring
+            if docstring_delimiter in stripped:
+                in_multiline_docstring = False
+                docstring_delimiter = None
+            # Skip docstring lines entirely when in import section
+            if not in_imports:
                 code_lines.append(line)
+            i += 1
+            continue
+
+        # Check for docstring start (both """ and ''')
+        if stripped.startswith('"""') or stripped.startswith("'''"):
+            docstring_delimiter = '"""' if stripped.startswith('"""') else "'''"
+
+            # Check if it's a single-line docstring (e.g., """docstring""")
+            # Count occurrences - if >= 2, it opens and closes on same line
+            if stripped.count(docstring_delimiter) >= 2:
+                # Single-line docstring - skip if in imports section
+                if in_imports:
+                    i += 1
+                    continue
+                else:
+                    code_lines.append(line)
+                    i += 1
+                    continue
+            else:
+                # Multi-line docstring starts - need to track until we find the end
+                in_multiline_docstring = True
+                if not in_imports:
+                    code_lines.append(line)
                 i += 1
                 continue
 

@@ -7,13 +7,23 @@
 
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Iterator
+from typing import (
+    Any,
+    Dict,
+    Iterator,
+    List,
+    Optional,
+    Tuple,
+)
 import json
+import time
 
 from pyspark.sql import Row
 from pyspark.sql.datasource import DataSource, DataSourceReader, SimpleDataSourceStreamReader
 from pyspark.sql.types import *
 import base64
+import logging
+import requests
 
 
 def register_lakeflow_source(spark):
@@ -205,34 +215,6 @@ def register_lakeflow_source(spark):
     ########################################################
     # sources/sap_successfactors/sap_successfactors.py
     ########################################################
-
-    SAP SuccessFactors Connector for Lakeflow Community Connectors.
-
-    This connector implements the LakeflowConnect interface for SAP SuccessFactors,
-    supporting OData v2, OData v4, REST, and SCIM 2.0 APIs.
-
-    Supports ~550 entities across modules:
-    - Employee Central (Core & Extended)
-    - Platform Services
-    - Recruiting
-    - Performance & Goals
-    - Time & Attendance
-    - Succession & Development
-    - Onboarding
-    - Finance & Operations
-    """
-
-    import base64
-    import time
-    import logging
-    from datetime import datetime
-    from typing import Iterator, Dict, List, Any, Optional, Tuple
-    import requests
-    from pyspark.sql.types import (
-        StructType, StructField, StringType, LongType, IntegerType,
-        DoubleType, BooleanType, TimestampType, DateType, DecimalType,
-        ArrayType, MapType
-    )
 
     logger = logging.getLogger(__name__)
 
