@@ -57,6 +57,12 @@ The following options can be passed via `table_options` in your pipeline_spec fo
 
 **Note:** To use these options, include them in the `externalOptionsAllowList` when creating your UC connection (see CLI example below).
 
+> **Important - externalOptionsAllowList**: The allowlist must include:
+> - **System options** (required by pipeline infrastructure): `tableName`, `tableNameList`, `tableConfigs`, `isDeleteFlow`
+> - **Connector-specific options** (for advanced queries): `custom_filter`, `$select`, `$expand`, `userId`, `timeAccountType`, `asOfDate`, `page`, `pageSize`
+>
+> If using the community connector CLI tool (`tools/community_connector`), system options are added automatically.
+
 ### Finding Your API Server
 
 Your SAP SuccessFactors API server depends on your data center location:
@@ -96,7 +102,7 @@ databricks connections create --json '{
     "company_id": "YOUR_COMPANY_ID",
     "user_id": "YOUR_USER_ID",
     "password": "YOUR_PASSWORD",
-    "externalOptionsAllowList": "custom_filter,$select,$expand,userId,timeAccountType,asOfDate,page,pageSize"
+    "externalOptionsAllowList": "tableName,tableNameList,tableConfigs,isDeleteFlow,custom_filter,$select,$expand,userId,timeAccountType,asOfDate,page,pageSize"
   }
 }'
 ```

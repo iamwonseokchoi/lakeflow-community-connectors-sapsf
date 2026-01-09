@@ -54,4 +54,4 @@ connection:
 # These table-specific options can be passed via table_options in pipeline_spec.
 # They must be included in externalOptionsAllowList when creating the UC connection.
 # ============================================================================
-external_options_allowlist: "custom_filter,$select,$expand,userId,timeAccountType,asOfDate,page,pageSize"
+external_options_allowlist: "tableName,tableNameList,tableConfigs,isDeleteFlow,custom_filter,$select,$expand,userId,timeAccountType,asOfDate,page,pageSize"

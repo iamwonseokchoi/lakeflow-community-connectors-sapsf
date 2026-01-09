@@ -1603,15 +1603,15 @@ def register_lakeflow_source(spark):
                 if key.startswith("__"):
                     continue  # Skip OData metadata
 
-                nullable = key not in primary_keys
+                # All fields nullable for API data (SAP may not always return all fields)
                 spark_type = self._infer_spark_type(value)
-                fields.append(StructField(key, spark_type, nullable))
+                fields.append(StructField(key, spark_type, True))
 
-            # Ensure primary keys are present
+            # Ensure primary keys are present (as nullable)
             existing_fields = {f.name for f in fields}
             for pk in primary_keys:
                 if pk not in existing_fields:
-                    fields.insert(0, StructField(pk, StringType(), False))
+                    fields.insert(0, StructField(pk, StringType(), True))
 
             return StructType(fields)
 
@@ -1646,9 +1646,9 @@ def register_lakeflow_source(spark):
             """Create a generic schema based on entity config."""
             fields = []
 
-            # Add primary keys as non-nullable
+            # Add primary keys as nullable (SAP API may not always return them)
             for pk in entity_config.get("primary_keys", []):
-                fields.append(StructField(pk, StringType(), False))
+                fields.append(StructField(pk, StringType(), True))
 
             # Add cursor field
             cursor = entity_config.get("cursor_field")
